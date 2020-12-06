@@ -1,2 +1,2 @@
 # bantu
-![Rita](pict/rita/1.jpg)
+![Rita](pict/rita/4.jpg)
