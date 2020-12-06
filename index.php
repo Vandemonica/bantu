@@ -1,3 +1,19 @@
+<?php
+//connect database
+$con = mysqli_connect("localhost","root","","cedova");
+
+//buat array sebagai wadah
+$wadah = array();
+
+//query select
+$result = mysqli_query($con, "SELECT * FROM randomtb ORDER BY id ASC");
+
+//loop selama ada data yg bisa dipanggil maka wadahi ke array
+while($fetch = mysqli_fetch_assoc($result)){
+    $wadah[] = $fetch;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,12 +49,18 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                      Sing iki ta sing mbok maksud?
+                        Daftar
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" onmouseover="show('cruzh')" onmouseout="sembunyi('cruzh')" href="#">Cruzh Karsten</a>
-                        <a class="dropdown-item" onmouseover="show('rita')" onmouseout="sembunyi('rita')" href="#">Rita Rossweisse</a>
-                        <a class="dropdown-item" onmouseover="show('shiraishi')" onmouseout="sembunyi('shiraishi')" href="#">Shiraishi</a>
+                        <!--------loop semua data pada array sebelumnya-------->
+                        <?php foreach($wadah as $a):?>
+
+                            <a class="dropdown-item" onmouseover="show(<?=$a['id'];?>)" onmouseout="sembunyi(<?=$a['id'];?>)" href="#"> <?=$a['nama'];?> </a>
+
+                        <!-- <a class="dropdown-item" onmouseover="show('rita')" onmouseout="sembunyi('rita')" href="#">Rita Rossweisse</a>
+                        <a class="dropdown-item" onmouseover="show('shiraishi')" onmouseout="sembunyi('shiraishi')" href="#">Shiraishi</a> -->
+                        <?php endforeach;?>
+                        <!----------------------------------------------------->
                     </div>
                 </li>
             </ul>
@@ -48,9 +70,23 @@
     <div class="jarak"></div>
     <div class="container">
         <div class="sembunyi">
-            <img id="cruzh" src="pict/cruzh/29.jpg" alt="">
+            <!--------loop juga yang ini-------->
+            <?php foreach($wadah as $b):?>
+                <table id="<?=$b['id'];?>">
+                    <tr>
+                        <th>Absen</th>
+                        <th>Nama</th>
+                    </tr>
+                    <tr>
+                        <td><?=$b['id'];?></td>
+                        <td><?=$b['nama'];?></td>
+                    </tr>
+                </table>
+            <!-- <img id="cruzh" src="pict/cruzh/29.jpg" alt="">
             <img id="rita" src="pict/rita/4.jpg" alt="">
-            <img id="shiraishi" src="pict/shiraishi/6.png" alt="">
+            <img id="shiraishi" src="pict/shiraishi/6.png" alt=""> -->
+            <?php endforeach;?>
+            <!------------------------------>
         </div>
     </div>
 </body>
