@@ -1,0 +1,44 @@
+.DropBtn{
+    background-color: black;
+    color: azure;
+    font-size: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.DropChild{
+    display: none;
+}
+.DropData{
+    text-align: center;
+    display: block;
+    background-color: gray;
+    width: 40%;
+    max-width: 200px;
+    padding: 4px;
+}
+.DropData:hover{
+    background-color: steelblue;
+}
+.TabData{
+    display: none;
+}
+.TabId{
+    padding: 2px;
+    width: 20px;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+}
+.TabItem{
+    padding: 2px;
+    width: 200px;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+}
+.TabInfo{
+    padding: 2px;
+    width: 300px;
+    border-style: solid;
+    border-width: 1px;
+}
